@@ -1,3 +1,4 @@
 writing 2024/09/23
 
-This directory generate charge density map from electronic charge density.
+This directory generates the "charge density map" from electronic charge density.
+You can change the tip position by editing the "G_cube_main.py" file.
