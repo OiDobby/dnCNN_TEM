@@ -6,7 +6,6 @@ For computational efficiency, we employ the pseudo-atomic orbital basis sets; Op
 
 We use the CNN model from the previous study (PHYS. REV. M 6, 123802 (2022), https://github.com/Fjoucken/Denoise_STM) with editing some options.
 
-
 USAGE
 1. generate disordered structures from "atomic_conf".
 2. obtain electronic charge density in Gaussian cube format using OpenMX code (https://www.openmx-square.org/whatisopenmx.html).
@@ -15,3 +14,5 @@ USAGE
 5. run "CNN_main.py" in CNN_working_dir (python3 CNN_main.py).
 6. After training the CNN model, you can use plot.py and eval.py.
 7. use the "plot.py" for plotting the prediction images, and use the "eval.py" for evaluating the prediction images (SSIM, MS-SSIM, PSNR)
+
+Our work reported in 
