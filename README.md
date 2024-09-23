@@ -14,5 +14,6 @@ USAGE
 5. run "CNN_main.py" in CNN_working_dir (python3 CNN_main.py).
 6. After training the CNN model, you can use plot.py and eval.py.
 7. use the "plot.py" for plotting the prediction images, and use the "eval.py" for evaluating the prediction images (SSIM, MS-SSIM, PSNR)
+8. The "plot.py" plots all the sliced patches, so you run the "img_merging.py". It makes the full-size image.
 
 Our work reported in 
