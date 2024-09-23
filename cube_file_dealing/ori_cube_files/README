@@ -1,8 +1,4 @@
-writing 2023/11/08
+writing 2024/09/23
 
-The directory, which is named 'Gen_DS', indicates the 'Generate DataSet'.
-When using the Gen_DS, you should prepare two files (PARCHG.png and img_noise.py).
-The img_noise.py makes the 3 sub-directories in current directory path.
-  1. Sliced 64 images (format; .png) reshaped in 64 x 64 pixels.
-  2. Normilized images from the reshaped images. (gray scale [0:255] to normalized scale [0:1])
-  3. Noisy images from the normalized images. Noise effect is incorporated by using Gaussian noising.
+Gaussian cube format files should be in here.
+The Gaussian cube files were calculated from OpenMX code.
