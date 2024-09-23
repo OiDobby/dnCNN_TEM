@@ -1,0 +1,237 @@
+import numpy as np
+import cv2
+import math
+import time
+import os
+import shutil
+import random
+import matplotlib.pyplot as plt
+import tensorflow as tf
+
+def dir_check(base_path, dir_name):
+    print('-------------------------------------------------------------------')
+    dir_path = os.path.join(base_path,dir_name)
+    print('Directory checking...')
+    if os.path.exists(dir_path):
+        print('Directory already exist. We remove the directory.')
+        shutil.rmtree(dir_path)
+        time.sleep(2)
+        print('Directory removed completely.')
+        time.sleep(1)
+
+        os.mkdir(dir_path)
+        print('Make a diretory.')
+
+    else:
+        os.mkdir(dir_path)
+        print('Make a diretory.')
+
+    print('-------------------------------------------------------------------')
+
+
+def slice_image(base_path, dir_name, ori_file_dir, num_make_images, noise_factor, exp_img_option):
+    dir_check(base_path, dir_name)
+    
+    dir_path = os.path.join(base_path, dir_name)
+
+    file_dir_path = os.path.join(base_path, ori_file_dir)
+    file_list = os.listdir(file_dir_path)
+    file_num = len(file_list)
+#    print(file_list)
+#    print(file_num)
+
+    file_name = [i+1 for i in range(file_num)]
+    file_name = list(map(str, file_name))
+    for i in range(file_num):
+        file_name[i] = 'set' + file_name[i]
+
+    noise_factor_name = list(map(str, noise_factor))
+
+    print('===================================================================')
+    print('Starting the sliced and normalized images')
+    print('Read from original image')
+    for x in range(len(noise_factor_name)):
+        for k in range(file_num):
+            file_path = os.path.join(file_dir_path, file_list[k])
+            print(file_path)
+            ori_img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE) # image read, flag=gray scale - original image
+
+            ori_X = ori_img.shape[1]
+            ori_Y = ori_img.shape[0]
+            if ori_X == ori_Y :
+                print('Shape of the image is square.')
+                ori_img = ori_img
+            elif ori_X > ori_Y :
+                print('Shape of the image is not square. We make the square image.')
+                ori_img = ori_img[0:ori_Y, 0:ori_Y]
+            elif ori_X < ori_Y :
+                print('Shape of the image is not square. We make the square image.')
+                ori_img = ori_img[0:ori_X, 0:ori_X]
+
+            print('Resizing the image in', num_make_images*64,'*',num_make_images*64 ,'pixels...')
+            resized_img = cv2.resize(ori_img, dsize = (num_make_images*64, num_make_images*64), interpolation=cv2.INTER_AREA) # scaled image
+                
+            ori_X = resized_img.shape[1]
+            ori_Y = resized_img.shape[0]
+            size_X = int(ori_X/num_make_images) # num = 64
+            size_Y = int(ori_Y/num_make_images) # num = 64
+    
+            os.chdir(dir_path)
+    
+#           sliced_img_name = [i+1 for i in range(64)]
+#           sliced_img_name = list(map(str, sliced_img_name))
+
+            sliced_np_name = [i+1 for i in range(num_make_images*num_make_images)]
+            sliced_np_name = list(map(str, sliced_np_name))
+                
+            if len(noise_factor_name) > 1:
+                for i in range (0,num_make_images*num_make_images):
+                    sliced_np_name[i] = noise_factor_name[x] + '_' + file_name[k] + '.' + sliced_np_name[i] + '.npy'
+            elif len(noise_factor_name) == 1:
+                for i in range (0,num_make_images*num_make_images):
+                    sliced_np_name[i] = file_name[k] + '.' + sliced_np_name[i] + '.npy'
+    
+            print('Image slicing is done. We made', num_make_images*num_make_images, 'images, which images are resized in 64*64 pixels.')
+    
+            for j in range (0,num_make_images):
+                for i in range (0,num_make_images):
+                    re_img = resized_img[j*size_Y:(j+1)*size_Y, i*size_X:(i+1)*size_X].copy()
+#                   cv2.imwrite(sliced_img_name[8*j+i], re_img)
+                    np.save(sliced_np_name[num_make_images*j+i], re_img)
+                
+            print('Image saving is done.')
+            os.chdir(base_path)
+
+    print('Finished in the all images.')
+
+
+def make_noisy_image(base_path, dir_name0, dir_name1, dir_name2, noise_factor, exp_img_option):
+    print('===================================================================')
+    print('Starting incorporation the noise in images')
+    dir_check(base_path, dir_name1)
+    dir_check(base_path, dir_name2)
+
+    dir_path0 = os.path.join(base_path,dir_name0)
+    dir_path1 = os.path.join(base_path,dir_name1)
+    dir_path2 = os.path.join(base_path,dir_name2)
+    
+    file_list = os.listdir(dir_path0)
+#    file_list.sort(key=lambda x: int(x.split('.')[1]))
+    file_num = len(os.listdir(dir_path0))
+
+    noise_factor_name = list(map(str, noise_factor))
+
+    print('===================================================================')
+    print('Progressing...')
+    print('We get the normalized sliced images and noisy images.')
+    print('The images will be normalized in [0:1].')
+
+    for k in range(file_num):
+        file_name = os.path.join(dir_path0, file_list[k])
+        img_ori = np.load(file_name)
+
+        height, width = img_ori.shape
+        img_norm = np.zeros((height, width), dtype=np.float64)
+        for i in range(height):
+            for j in range(width):
+                img_norm[i][j] = img_ori[i][j]/225
+        
+        #print(img_norm)
+        norm_file_name = os.path.join(dir_path1, file_list[k])
+        np.save(norm_file_name, img_norm)
+
+        if exp_img_option == 0:
+            img_noisy = img_norm
+            noise_file_name = os.path.join(dir_path2,file_list[k])
+            np.save(noise_file_name, img_noisy)
+        elif exp_img_option == 1:
+            #noise_factor = 0.30
+            img_noisy = img_norm + noise_factor[0] * tf.random.normal(shape=img_norm.shape)
+            img_noisy = tf.clip_by_value(img_noisy, clip_value_min = 0., clip_value_max=1.)
+            noise_file_name = os.path.join(dir_path2,file_list[k])
+            np.save(noise_file_name, img_noisy)
+        elif exp_img_option == 2:
+            img_noisy = img_norm.copy()
+            height, width = img_noisy.shape
+            for i in range(height):
+                for j in range(width):
+                    rand_num = random.uniform(0.0, 1.0)
+                    if rand_num <= noise_factor[0]:
+                        if img_noisy[i][j] < 0.5:
+                            img_noisy[i][j] = 1
+                        else :
+                            img_noisy[i][j] = 0 
+                    else :
+                        img_noisy[i][j] = img_noisy[i][j]
+            noise_file_name = os.path.join(dir_path2,file_list[k])
+            np.save(noise_file_name, img_noisy)
+        elif exp_img_option == 3:
+            img_noisy = img_norm + noise_factor[0] * tf.random.normal(shape=img_norm.shape)
+            img_noisy = tf.clip_by_value(img_noisy, clip_value_min = 0., clip_value_max=1.)
+            img_noisy = img_noisy.numpy()
+            height, width = img_noisy.shape
+            for l in range(height):
+                for m in range(width):
+                    rand_num = random.uniform(0.0, 1.0)
+                    if rand_num <= noise_factor[0]:
+                        if img_noisy[l][m] < 0.5:
+                            img_noisy[l][m] = 1
+                        else :
+                            img_noisy[l][m] = 0
+                    else :
+                        img_noisy[l][m] = img_noisy[l][m]
+            noise_file_name = os.path.join(dir_path2,file_list[k])
+            np.save(noise_file_name, img_noisy)
+        elif exp_img_option == 4:
+            img_noisy = img_norm.copy()
+            height, width = img_noisy.shape
+            for l in range(height):
+                for m in range(width):
+                    rand_num = random.uniform(0.0, 1.0)
+                    if rand_num <= noise_factor[0]:
+                        if img_noisy[l][m] < 0.5:
+                            img_noisy[l][m] = 1
+                        else :
+                            img_noisy[l][m] = 0
+                    else :
+                        img_noisy[l][m] = img_noisy[l][m]
+            img_noisy = img_noisy + noise_factor[0] * tf.random.normal(shape=img_norm.shape)
+            img_noisy = tf.clip_by_value(img_noisy, clip_value_min = 0., clip_value_max=1.)
+            noise_file_name = os.path.join(dir_path2,file_list[k])
+            np.save(noise_file_name, img_noisy)
+
+    print ('Complete to save the NumPy files for the images.')
+    print('===================================================================')
+
+
+def make_valid_set(base_path, dir_name1, dir_name2):
+    dir_path1 = base_path + '/' + dir_name1
+    dir_path2 = base_path + '/' + dir_name2
+    
+    file_list = os.listdir(dir_path1)
+    file_num = len(file_list)
+
+    rand_file_num = int(file_num*0.2)
+    rand_file_list = random.sample(file_list, rand_file_num)
+#    print(rand_file_list)
+
+    print('===================================================================')
+    print('Copy some images for valid set from training set')
+
+    dir_VS_name1 = dir_name1.replace('/', '') + '-val/'
+    dir_VS_name2 = dir_name2.replace('/', '') + '-val/'
+
+    dir_check(base_path, dir_VS_name1)
+    dir_check(base_path, dir_VS_name2)
+
+    dir_VS_path1 = base_path + '/' + dir_VS_name1
+    dir_VS_path2 = base_path + '/' + dir_VS_name2
+
+    for i in range(rand_file_num):
+        shutil.copyfile(dir_path1 + rand_file_list[i] , dir_VS_path1 + rand_file_list[i])
+        shutil.copyfile(dir_path2 + rand_file_list[i] , dir_VS_path2 + rand_file_list[i])
+
+    print('Complete to make the valid set')
+    print('===================================================================')
+
+    return base_path
