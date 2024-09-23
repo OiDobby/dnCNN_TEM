@@ -1,3 +1,6 @@
 writing 2024/09/23
 
-This directory generate disordered structures for OpenMX code input format.
+This directory generates disordered structures for OpenMX code input format.
+The file format is initially POSCAR (VASP) to finally OpenMX input.
+
+Please, check ran_atomic_main.py first!
