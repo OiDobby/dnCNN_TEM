@@ -6,3 +6,5 @@ The img_noise.py makes the 3 sub-directories in current directory path.
   1. Sliced 64 images (format; .png) reshaped in 64 x 64 pixels.
   2. Normilized images from the reshaped images. (gray scale [0:255] to normalized scale [0:1])
   3. Noisy images from the normalized images. Noise effect is incorporated by using Gaussian noising.
+
+"eval.py", "plot.py", and "img_merging.py" are utility files after finishing model training.
