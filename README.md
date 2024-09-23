@@ -6,7 +6,7 @@ For computational efficiency, we employ the pseudo-atomic orbital basis sets; Op
 
 We use the CNN model from the previous study (Phys. Rev. M 6, 123802 (2022), https://github.com/Fjoucken/Denoise_STM) with editing some options.
 
-Our work reported in 
+We report our work published in
 
 USAGE
 1. generate disordered structures from "atomic_conf".
