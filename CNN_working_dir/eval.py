@@ -107,15 +107,16 @@ ori_img_name = 'merged_image_norm.npy'
 noise_img_name = 'merged_image_noise.npy'
 PD_img_name = 'merged_image_PD.npy'
 
-eval_opt = 1    # 1: PSNR, 2:SSIM
+#eval_opt is not completed
+#eval_opt = 1    # 1: PSNR, 2:SSIM
 
 
 # Set directory path
 
-base_path1 = os.getcwd()
-base_path = os.path.join(base_path1, base_dir_name)
+base_path_ori = os.getcwd()
+base_path = os.path.join(base_path_ori, base_dir_name)
 
-ori_img_path = os.path.join(base_path1, ori_img_name)
+ori_img_path = os.path.join(base_path_ori, ori_img_name)
 noise_img_path = os.path.join(base_path, noise_img_name)
 PD_img_path = os.path.join(base_path, PD_img_name)
 
