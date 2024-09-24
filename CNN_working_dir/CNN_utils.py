@@ -107,7 +107,7 @@ def get_uncompiled_model_filter(model_number, dropout_rate, pixels, num_filters)
         #final
         model.add(Conv2D(1, (3, 3), padding='same', activation='tanh'))
 
-    if model_number == 1: #my model 1
+    if model_number == 1: #my model 1 (in paper)
         model = models.Sequential()
         #put some layers
         #block1 down
@@ -209,10 +209,10 @@ def get_compiled_model(model_number, loss, alpha, dropout_rate, pixels, learning
         model.compile(loss=tf.keras.losses.MeanAbsoluteError(), optimizer=opt, metrics=['mean_absolute_error'])
     if loss == "MSE":
         model.compile(loss=tf.keras.losses.MeanSquaredError(), optimizer= opt, metrics=['mean_squared_error'])
-    if loss == "SSIM":
-        model.compile(loss=my_loss_function_SSIM(alpha), optimizer=opt, metrics=['mean_absolute_error'])
-    if loss == "SSIMm":
-        model.compile(loss=my_loss_function_SSIM_multi(alpha), optimizer= opt, metrics=['mean_absolute_error'])
+    #if loss == "SSIM":
+    #    model.compile(loss=my_loss_function_SSIM(alpha), optimizer=opt, metrics=['mean_absolute_error'])
+    #if loss == "SSIMm":
+    #    model.compile(loss=my_loss_function_SSIM_multi(alpha), optimizer= opt, metrics=['mean_absolute_error'])
     return model
 
 #plotting files
