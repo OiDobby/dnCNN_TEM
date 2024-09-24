@@ -1,4 +1,4 @@
-# TEM_CNN_denoise
+# dnCNN_TEM
 
 This code provides denoising method for TEM image using CNN.
 We use density functional theory calculation to obtain the ground truth images.
