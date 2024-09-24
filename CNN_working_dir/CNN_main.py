@@ -28,7 +28,7 @@ drop_out_rate = 0.0
 #learning rate
 learning_rate = 0.001
 #loss (MAE works well)
-loss = "MAE"   #choose MAE or SSIM or SSIMm
+loss = "MAE"   #choose MAE or MSE
 #Parameter to set if you use SSIM as a loss (see this paper for more info: https://aip.scitation.org/doi/10.1063/5.0054920)
 alpha = 0 #for SSIM (1 is pure SSIM, 0 is MAE)
 #I name the model for saving
