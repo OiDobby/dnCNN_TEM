@@ -4,7 +4,7 @@ This code provides denoising method for TEM image using CNN.
 We use density functional theory calculation to obtain the ground truth images.
 For computational efficiency, we employ the pseudo-atomic orbital basis sets; OpenMX code (https://www.openmx-square.org/whatisopenmx.html).
 
-We use the CNN model from the previous study (Phys. Rev. M 6, 123802 (2022), https://github.com/Fjoucken/Denoise_STM) with editing some options.
+We use the CNN model from the previous study (Phys. Rev. M 6, 123802 (2022), https://github.com/Fjoucken/Denoise_STM) with editing that.
 
 Our work is in progress for submission.
 
