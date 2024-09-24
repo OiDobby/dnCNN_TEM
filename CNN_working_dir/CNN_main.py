@@ -43,8 +43,8 @@ DS_path = os.path.join(base_path, DS_dir_name)
 train_X_name = 'noise_image/'   # noisy images dir name for training
 train_Y_name = 'norm_image/'    # ground truth dir name for training
 
-test_X_name = 'noise_image-val/'   # ground truth dir name for test
-test_Y_name = 'norm_image-val/'   # noisy images dir name for test
+test_X_name = 'noise_image-val/'   # noisy images dir name for test (or validation)
+test_Y_name = 'norm_image-val/'   # ground truth dir name for test (or validation)
 
 #Loading the training data.
 train_X_path = os.path.join(DS_path, train_X_name)
