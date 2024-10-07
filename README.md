@@ -8,7 +8,7 @@ We use the CNN model from the previous study (Phys. Rev. M 6, 123802 (2022), htt
 
 Our work is in progress for submission.
 
-USAGE
+## USAGE
 1. generate disordered structures from "atomic_conf".
 2. obtain electronic charge density in Gaussian cube format using OpenMX code (https://www.openmx-square.org/whatisopenmx.html).
 3. get charge density 2D maps from electronic charge densities of disordered structures.
