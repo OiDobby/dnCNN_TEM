@@ -4,7 +4,7 @@ This code provides denoising method for TEM image using CNN.
 We use density functional theory calculation to obtain the ground truth images.
 For computational efficiency, we employ the pseudo-atomic orbital basis sets; [OpenMX](https://www.openmx-square.org/whatisopenmx.html) code.
 
-We use the CNN model from the previous study ([denosie_STM](https://github.com/Fjoucken/Denoise_STM)) with editing that.
+We use the CNN model from the previous study ([Denosie_STM](https://github.com/Fjoucken/Denoise_STM)) with editing that.
 
 Our work is in progress for submission.
 
@@ -19,4 +19,4 @@ Our work is in progress for submission.
 8. The "plot.py" plots all the sliced patches, so you run the "img_merging.py". It makes the full-size image.
 
 ## Citation
-1. Phys. Rev. M 6, 123802 (2022)
+1. Phys. Rev. M 6, 123802 (2022) (https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.6.123802)
