@@ -172,12 +172,12 @@ def img_proc(base_path, ori_file_dir, dir_name, dir_name1, dir_name2, num_make_i
     print('Checking "WB_option".')
     if WB_option == 0:
         print('"WB_option" OFF')
-        print('No whith balancing is applied to the images.')
+        print('No white balancing is applied to the images.')
     elif WB_option == 1:
         print('"WB_option" ON')
     else :
         print('You do not use the value specified for "WB_option".')
-        print('No whith balancing is applied to the images.')
+        print('No white balancing is applied to the images.')
 
     print('Checking "WB_val".')
     if WB_option == 0:
