@@ -37,9 +37,9 @@ exp_img_option = 1  # 0: Using experimental images (already noise, do not use to
                     # 3: Gaussian + Salt-Pepper noise
                     # 4: Salt-Pepper + Gausian noise
 
-#img_proc(base_path, ori_file_dir, dir_name, dir_name1, dir_name2, num_make_images, num_pixel, noise_factor, WB_option, WB_val, exp_img_option)
+img_proc(base_path, ori_file_dir, dir_name, dir_name1, dir_name2, num_make_images, num_pixel, noise_factor, WB_option, WB_val, exp_img_option)
 
-#make_valid_set(base_path, dir_name1, dir_name2)
+make_valid_set(base_path, dir_name1, dir_name2)
 
 dir_name = 'test_image/'
 ori_file_dir = 'test_png/'       # It indicates directory for origin images. (.png format)
