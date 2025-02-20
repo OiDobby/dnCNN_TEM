@@ -8,7 +8,7 @@ We use the CNN model from the previous study ([Denosie_STM](https://github.com/F
 
 Our work is in progress for submission.
 
-## Requirement
+## Requirements
 1. [OpenCV](https://opencv.org/) (open source computer vision library)  
 ```shell
 pip install opencv-python
