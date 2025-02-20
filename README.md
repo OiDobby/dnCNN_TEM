@@ -31,4 +31,4 @@ pip install tensorflow
 8. The "plot.py" plots all the sliced patches, so you run the "img_merging.py". It makes the full-size image.
 
 ## Citation
-1. Phys. Rev. M 6, 123802 (2022) (https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.6.123802)
+1. [Phys. Rev. M 6, 123802 (2022)](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.6.123802)
