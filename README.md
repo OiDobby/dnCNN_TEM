@@ -8,6 +8,11 @@ We use the CNN model from the previous study ([Denosie_STM](https://github.com/F
 
 Our work is in progress for submission.
 
+## Requirement
+1. OpenCV
+2.   
+3. OpenMX (DFT code)
+
 ## Usage
 1. generate disordered structures from "atomic_conf".
 2. obtain electronic charge density in Gaussian cube format using OpenMX code (https://www.openmx-square.org/whatisopenmx.html).
