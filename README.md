@@ -9,11 +9,11 @@ We use the CNN model from the previous study ([Denosie_STM](https://github.com/F
 Our work is in progress for submission.
 
 ## Requirement
-1. OpenCV [https://opencv.org/] (open source computer vision library)
+1. OpenCV[https://opencv.org/] (open source computer vision library)  
 ```pip install opencv-python```
-2. TensorFlow [https://www.tensorflow.org/]
+2. TensorFlow[https://www.tensorflow.org/]  
 ```pip install tensorflow```
-3. OpenMX [https://www.openmx-square.org/](DFT code)
+3. OpenMX[https://www.openmx-square.org/] (DFT code)
 
 ## Usage
 1. generate disordered structures from "atomic_conf".
