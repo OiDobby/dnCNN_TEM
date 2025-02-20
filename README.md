@@ -18,6 +18,7 @@ pip install opencv-python
 pip install tensorflow
 ```
 3. [OpenMX](https://www.openmx-square.org/) (DFT code)
+4. Python (>= 3.8), matplotlib, etc.
 
 ## Usage
 1. generate disordered structures from "atomic_conf".
