@@ -1,7 +1,9 @@
 writing 2023/11/08
 
 The directory, which is named 'Gen_DS', indicates the 'Generate DataSet'.
-When using the Gen_DS, you should prepare two files (PARCHG.png and img_noise.py).
+When using the Gen_DS, you should prepare two directories (ori_png and test_png).
+The directory named "ori_png" contains the original image from charge density map.
+The "test_png" is just optional for your trained model testing.
 The img_noise.py makes the 3 sub-directories in current directory path.
   1. Sliced 64 images (format; .png) reshaped in 64 x 64 pixels.
   2. Normilized images from the reshaped images. (gray scale [0:255] to normalized scale [0:1])
