@@ -30,5 +30,10 @@ pip install tensorflow
 7. use the "plot.py" for plotting the prediction images, and use the "eval.py" for evaluating the prediction images (SSIM, MS-SSIM, PSNR)
 8. The "plot.py" plots all the sliced patches, so you run the "img_merging.py". It makes the full-size image.
 
+## Pre-trained model
+We uploaded the pre-trained model to the "CNN_pre-trained_model" directory.
+Note the abbreviation below:
+
+
 ## Citation
 1. [Phys. Rev. M 6, 123802 (2022)](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.6.123802)
