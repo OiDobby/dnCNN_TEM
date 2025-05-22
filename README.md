@@ -37,7 +37,7 @@ Note the abbreviation below:
 - SP: trained by Salt-and-Pepper noise
 - G_SP: trained by Gaussian noise + Salt-and-Pepper noise
 - BB: trained by Background Brightness with Gaussian noise
-Each noise type can be obtained in our paper (arXiv:2501.11225[https://arxiv.org/abs/2501.11225])
+Each noise type can be obtained in our paper ([arXiv:2501.11225](https://arxiv.org/abs/2501.11225))
 
 ## Citation
 1. [Phys. Rev. M 6, 123802 (2022)](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.6.123802)
